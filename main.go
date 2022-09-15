@@ -11,7 +11,6 @@ func Ola(nome, idioma string) string {
 	if nome == "" {
 		nome = "Mundo"
 	}
-
 	return prefixodeSaudacao(idioma) + nome
 }
 

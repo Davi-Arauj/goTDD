@@ -13,18 +13,21 @@ func TestPerimetro(t *testing.T) {
 
 func TestArea(t *testing.T) {
 	testesArea := []struct {
-		form     Forma
-		esperado float64
+		nome     string
+		forma    Forma
+		temArea float64
 	}{
-		{Retangulo{12, 6}, 72.0},
-		{Circulo{10}, 314.1592653589793},
+		{nome: "Retangulo", forma: Retangulo{12, 6}, temArea: 72},
+		{nome: "Circulo", forma: Circulo{10}, temArea: 314.1592653589793},
+		{nome: "Triangulo", forma: Triangulo{12, 6}, temArea: 36},
 	}
 
 	for _, tt := range testesArea {
-		resultado := tt.form.Area()
-		if resultado != tt.esperado {
-			t.Errorf("resultado '%.2f', esperado '%.2f'", resultado, tt.esperado)
-		}
+		t.Run(tt.nome, func(t *testing.T) {
+			resultado := tt.forma.Area()
+			if resultado != tt.temArea {
+				t.Errorf("%#v resultado '%.2f', esperado '%.2f'", tt.forma, resultado, tt.temArea)
+			}
+		})
 	}
-
 }
