@@ -1,5 +1,11 @@
 package main
 
+import (
+	cc "aprendaGoTDD/Cumprimenta"
+	"fmt"
+	"net/http"
+)
+
 const (
 	prefixoOlaPortugues = "Olá, "
 	prefixoOlaFrances   = "Bonjour, "
@@ -28,6 +34,11 @@ func prefixodeSaudacao(idioma string) (prefixo string) {
 	}
 	return
 }
-func main() {
 
+func main() {
+	err := http.ListenAndServe(":5001", http.HandlerFunc(cc.HandlerMeuCumprimento))
+
+	if err != nil {
+		fmt.Println(err)
+	}
 }
