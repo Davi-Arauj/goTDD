@@ -1,4 +1,4 @@
-package cumprimenta
+package main
 
 import (
 	"bytes"
